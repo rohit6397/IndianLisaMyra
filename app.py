@@ -125,25 +125,21 @@ def register():
 
         conn.close()
 
-        return f"""
+        return """
 
         <h1>
 
-        Registration Success
+        Registration Successful
 
         </h1>
 
         <h2>
 
-        Username : {username}
+        Please Login To Continue
 
         </h2>
 
-        <h2>
-
-        Password : {password}
-
-        </h2>
+        <br>
 
         <a href='/login'>
 

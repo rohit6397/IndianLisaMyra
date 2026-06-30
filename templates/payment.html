@@ -18,11 +18,13 @@ filename='style.css') }}">
 
 <h1>IndianLisaMyra</h1>
 
-<h2>Premium Payment</h2>
+<h2>Premium Membership Payment</h2>
 
 <img
-src="{{ url_for('static',
-filename='images/qr.jpg') }}"
+src="{{ url_for(
+'static',
+filename='images/qr.jpg'
+) }}"
 width="250">
 
 <br><br>
@@ -35,26 +37,41 @@ width="250">
 
 <br>
 
+<form action="/success">
+
 <input
+
+id="txn"
+
 type="text"
-placeholder="Transaction ID">
+
+placeholder="Transaction ID"
+
+required>
 
 <br><br>
 
 <input
-type="file">
+
+id="proof"
+
+type="file"
+
+required>
 
 <br><br>
 
-<a href="/success">
+<button
 
-<button>
+id="submitBtn"
+
+disabled>
 
 Submit Payment
 
 </button>
 
-</a>
+</form>
 
 <br><br>
 
@@ -69,6 +86,59 @@ Back
 </a>
 
 </div>
+
+<script>
+
+const txn =
+document.getElementById(
+'txn'
+);
+
+const proof =
+document.getElementById(
+'proof'
+);
+
+const btn =
+document.getElementById(
+'submitBtn'
+);
+
+function validate(){
+
+if(
+
+txn.value.trim() !== ''
+
+&&
+
+proof.files.length > 0
+
+){
+
+btn.disabled = false;
+
+}
+
+else{
+
+btn.disabled = true;
+
+}
+
+}
+
+txn.addEventListener(
+'input',
+validate
+);
+
+proof.addEventListener(
+'change',
+validate
+);
+
+</script>
 
 </body>
 
